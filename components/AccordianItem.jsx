@@ -27,7 +27,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#123456",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: "5rem",
+    paddingHorizontal: "4rem",
+    paddingVertical: "1rem",
+    marginVertical: "0.1rem",
+    borderRadius: "1rem",
   },
   name: {
     color: "white",

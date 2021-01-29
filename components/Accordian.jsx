@@ -8,38 +8,36 @@ import axios from "axios";
 // import { launchData } from "../fixtures/LaunchData";
 // import { launchSiteData } from "../fixtures/LaunchSiteData";
 
-import AccordianItem from "./AccordianItem";
+import AccordianItemHeader from "./AccordianItemHeader";
+import AccordianItemDetails from "./AccordianItemDetails";
 
 const Accordian = (props) => {
   const [clicked, setClicked] = useState(false);
   const [missionData, setMissionData] = useState({});
-  let launchData;
-  let launchSiteData;
+  const [launchData, setLaunchData] = useState({});
 
   useEffect(() => {
     const urlMissions = "https://api.spacexdata.com/v3/missions";
-    const urlLaunchpads = "https://api.spacexdata.com/v3/launchpads";
-    const urlLaunches = "https://api.spacexdata.com/v3/launches/past";
-    axios
-      .get(urlMissions)
+    const urlLaunchpads = "https://api.spacexdata.com/v4/launchpads";
+    const urlLaunches = "https://api.spacexdata.com/v4/launches/past";
+
+    const missionReq = axios.get(urlMissions);
+    const launchReq = axios.get(urlLaunches);
+    const launchpadReq = axios.get(urlLaunchpads);
+    // sets mission state separatly from mission detail state
+    missionReq
       .then(({ data }) => {
         setMissionData(data);
       })
       .catch((err) => {
         console.error(err);
       });
-    axios
-      .get(urlLaunchpads)
-      .then(({ data }) => {
-        launchSiteData = data;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get(urlLaunches)
-      .then(({ data }) => {
-        launchData = data;
+
+    Promise.all([missionReq, launchReq, launchpadReq])
+      .then(([__, { data: launches }, { data: launchSites }]) => {
+        
+        
+        
       })
       .catch((err) => {
         console.error(err);
@@ -55,33 +53,24 @@ const Accordian = (props) => {
     };
   };
 
-  // const data = missionData.reduce((acc, md) => {
-  //   const { mission_name } = md;
-  //   if (mission_name) acc[mission_name] = md;
-  //   return acc;
-  // }, {});
-
-  // launchData.forEach((ld) => {
-  //   if (ld.mission_name) {
-  //     if (data[ld.mission_name[0]] && data[ld.mission_name[0]].launches) {
-  //       data[ld.mission_name[0]].launches += `${ld.flight_number}`;
-  //     }
-  //   }
-  // });
-
-  // console.log(data);
   return (
     <IconContext.Provider value={{ color: "#00FF89", size: "25px" }}>
       <View style={styles.container}>
         {missionData &&
           Object.values(missionData).map((data, index) => {
+            const isToggled = clicked === index;
+            const { mission_name: title, details } = data;
             return (
-              <AccordianItem
-                data={data}
-                key={index}
-                toggle={toggle(index)}
-                isToggled={clicked === index}
-              />
+              <>
+                <AccordianItemHeader
+                  key={title}
+                  {...{ title, isToggled }}
+                  toggle={toggle(index)}
+                />
+                {isToggled && (
+                  <AccordianItemDetails key={index} details={details} />
+                )}
+              </>
             );
           })}
       </View>

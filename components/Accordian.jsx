@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { IconContext } from "react-icons";
 
 import axios from "axios";
@@ -10,21 +10,22 @@ import axios from "axios";
 
 import AccordianItemHeader from "./AccordianItemHeader";
 import AccordianItemDetails from "./AccordianItemDetails";
+import AccordianItem from "./AccordianItem";
 
 const Accordian = (props) => {
   const [clicked, setClicked] = useState(false);
   const [missionData, setMissionData] = useState({});
-  const [launchData, setLaunchData] = useState({});
 
   useEffect(() => {
     const urlMissions = "https://api.spacexdata.com/v3/missions";
-    const urlLaunchpads = "https://api.spacexdata.com/v4/launchpads";
-    const urlLaunches = "https://api.spacexdata.com/v4/launches/past";
+    const urlLaunchpads = "https://api.spacexdata.com/v3/launchpads";
+    const urlLaunches = "https://api.spacexdata.com/v3/launches/past";
 
     const missionReq = axios.get(urlMissions);
     const launchReq = axios.get(urlLaunches);
     const launchpadReq = axios.get(urlLaunchpads);
     // sets mission state separatly from mission detail state
+
     missionReq
       .then(({ data }) => {
         setMissionData(data);
@@ -33,11 +34,14 @@ const Accordian = (props) => {
         console.error(err);
       });
 
+    // I want to set an individual state for each details component
+    // I want them to update individually once the data is recieved
+    //
     Promise.all([missionReq, launchReq, launchpadReq])
       .then(([__, { data: launches }, { data: launchSites }]) => {
-        
-        
-        
+        launches.forEach((launch) => {
+          console.log(launch.mission_id, launch.mission_name);
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -55,25 +59,20 @@ const Accordian = (props) => {
 
   return (
     <IconContext.Provider value={{ color: "#00FF89", size: "25px" }}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         {missionData &&
           Object.values(missionData).map((data, index) => {
             const isToggled = clicked === index;
-            const { mission_name: title, details } = data;
             return (
-              <>
-                <AccordianItemHeader
-                  key={title}
-                  {...{ title, isToggled }}
-                  toggle={toggle(index)}
-                />
-                {isToggled && (
-                  <AccordianItemDetails key={index} details={details} />
-                )}
-              </>
+              <AccordianItem
+                key={index}
+                isToggled
+                toggle={toggle(index)}
+                data={data}
+              />
             );
           })}
-      </View>
+      </SafeAreaView>
     </IconContext.Provider>
   );
 };

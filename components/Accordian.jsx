@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+
+import Constants from "expo-constants";
 
 import axios from "axios";
 
@@ -11,6 +20,8 @@ import axios from "axios";
 import AccordianItem from "./AccordianItem";
 
 const Accordian = (props) => {
+  const { changeView } = props;
+
   const [clicked, setClicked] = useState(false);
   const [missionData, setMissionData] = useState({});
   const [launchData, setLaunchData] = useState({});
@@ -57,6 +68,7 @@ const Accordian = (props) => {
               details,
               launch_site,
               flight_number,
+              launch_date_local,
             } = launch;
             for (const id of mission_id) {
               const data = {
@@ -64,6 +76,7 @@ const Accordian = (props) => {
                 details,
                 launch_site,
                 flight_number,
+                launch_date_local,
                 location: launchSitesRef[launch_site.site_id],
               };
               if (acc[id]) {
@@ -93,20 +106,25 @@ const Accordian = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text>SpaceX Launch Viewer</Text>
-      {missionData &&
-        Object.values(missionData).map((data, index) => {
-          const isToggled = clicked === index;
-          return (
-            <AccordianItem
-              key={index}
-              isToggled={isToggled}
-              toggle={toggle(index)}
-              header={data}
-              details={launchData[data.mission_id]}
-            />
-          );
-        })}
+      <View style={styles.header}>
+        <Text style={styles.textLarge}>SpaceX Missions</Text>
+      </View>
+      <View style={styles.accordian}>
+        {missionData &&
+          Object.values(missionData).map((data, index) => {
+            const isToggled = clicked === index;
+            return (
+              <AccordianItem
+                key={index}
+                isToggled={isToggled}
+                toggle={toggle(index)}
+                header={data}
+                details={launchData[data.mission_id]}
+                changeView={changeView}
+              />
+            );
+          })}
+      </View>
     </View>
   );
 };
@@ -114,11 +132,24 @@ const Accordian = (props) => {
 export default Accordian;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
+  header: {
+    backgroundColor: "#181c1f",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 20,
+    marginTop: Constants.statusBarHeight,
+  },
+  textLarge: {
+    color: "#ffffff",
+    fontSize: 20,
+  },
+  accordian: {
     display: "flex",
     flexDirection: "column",
-    padding: 15,
-    margin: 20,
+    margin: 10,
+  },
+  container: {
+    backgroundColor: "#22272b",
   },
 });

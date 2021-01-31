@@ -5,15 +5,20 @@ import AccordianItemHeader from "./AccordianItemHeader";
 import AccordianItemDetails from "./AccordianItemDetails";
 
 const AccordianItem = (props) => {
-  const { isToggled, header, toggle, details } = props;
+  const { isToggled, header, toggle, details, changeView } = props;
   const { mission_name: title } = header;
   return (
-    <View>
+    <View style={styles.container}>
       <AccordianItemHeader {...{ title, isToggled, toggle }} />
       {isToggled && (
         <>
-          <Text>Success/Fail|Description|Coordinates</Text>
-          <AccordianItemDetails details={details} />
+          <View style={styles.columnHeaderContainer}>
+            <Text style={styles.columnHeadersText}>Date</Text>
+            <Text style={styles.columnHeadersText}>Success</Text>
+            <Text style={styles.columnHeadersText}>Location</Text>
+            <Text style={styles.columnHeadersText}>Details</Text>
+          </View>
+          <AccordianItemDetails details={details} changeView={changeView} />
         </>
       )}
     </View>
@@ -22,7 +27,23 @@ const AccordianItem = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    shadowOpacity: 5,
+    borderWidth: 1,
+    borderColor: "#0f1112",
+    borderRadius: 40,
+    backgroundColor: "#181C1F",
+    marginVertical: 5,
+  },
+  columnHeadersText: {
+    fontSize: 10,
+    color: "white",
+  },
+  columnHeaderContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    borderBottomWidth: 1,
+    paddingBottom: 10,
   },
 });
 

@@ -1,14 +1,20 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import { StyleSheet, Text, View, Button } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const AccordianItemHeader = (props) => {
   const { toggle, title, isToggled } = props;
   return (
-    <View onClick={toggle} style={styles.containerName}>
+    <Button onClick={toggle} onPress={toggle} style={styles.containerName}>
       <Text style={styles.name}>{title}</Text>
-      <Text>{isToggled ? <FiMinus /> : <FiPlus />}</Text>
-    </View>
+      <Text>
+        {isToggled ? (
+          <AntDesign name="minus" size={24} color="white" />
+        ) : (
+          <AntDesign name="plus" size={24} color="white" />
+        )}
+      </Text>
+    </Button>
   );
 };
 
@@ -19,14 +25,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#123456",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: "4rem",
-    paddingVertical: "1rem",
-    marginVertical: "0.1rem",
-    borderRadius: "1rem",
+    paddingHorizontal: 40,
+    paddingVertical: 10,
+    marginVertical: 5,
+    borderRadius: 4,
+    height: 100,
   },
   name: {
     color: "white",
-    fontSize: "2rem",
+    fontSize: 20,
   },
 });
 

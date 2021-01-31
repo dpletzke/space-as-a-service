@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { IconContext } from "react-icons";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import axios from "axios";
 
+// fixtures for testing
 // import { missionData } from "../fixtures/MissionData";
 // import { launchData } from "../fixtures/LaunchData";
 // import { launchSiteData } from "../fixtures/LaunchSiteData";
 
-import AccordianItemHeader from "./AccordianItemHeader";
-import AccordianItemDetails from "./AccordianItemDetails";
 import AccordianItem from "./AccordianItem";
 
 const Accordian = (props) => {
@@ -94,12 +92,13 @@ const Accordian = (props) => {
   };
 
   return (
-    <IconContext.Provider value={{ color: "#00FF89", size: "25px" }}>
-      <SafeAreaView style={styles.container}>
-        {missionData &&
-          Object.values(missionData).map((data, index) => {
-            const isToggled = clicked === index;
-            return (
+    <SafeAreaView style={styles.container}>
+      <Text>SpaceX Launch Viewer</Text>
+      {missionData &&
+        Object.values(missionData).map((data, index) => {
+          const isToggled = clicked === index;
+          return (
+            <>
               <AccordianItem
                 key={index}
                 isToggled={isToggled}
@@ -107,10 +106,10 @@ const Accordian = (props) => {
                 header={data}
                 details={launchData[data.mission_id]}
               />
-            );
-          })}
-      </SafeAreaView>
-    </IconContext.Provider>
+            </>
+          );
+        })}
+    </SafeAreaView>
   );
 };
 
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     display: "flex",
     flexDirection: "column",
-    padding: "1.5rem",
-    margin: "2rem",
+    padding: 15,
+    margin: 20,
   },
 });

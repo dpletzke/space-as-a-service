@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { FaRegSmile } from "react-icons/fa";
-import { GiMineExplosion } from "react-icons/gi";
+import { Ionicons, Octicons } from "@expo/vector-icons";
 
 const AccordianItemDetails = (props) => {
   const { details } = props;
@@ -12,9 +11,11 @@ const AccordianItemDetails = (props) => {
           const { launch_success, details, location } = data;
           return (
             <View key={index} style={styles.container}>
-              <Text>
-                {launch_success ? <FaRegSmile /> : <GiMineExplosion />}
-              </Text>
+              {launch_success ? (
+                <Ionicons name="md-checkmark-circle" size={32} color="green" />
+              ) : (
+                <Octicons name="issue-opened" size={32} color="red" />
+              )}
               <Text>{details && Object.values(details)}</Text>
               <Text>{location && Object.values(location)}</Text>
             </View>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     display: "flex",
     flexDirection: "row",
-    borderWidth: "1px",
+    borderWidth: 1,
   },
 });
 

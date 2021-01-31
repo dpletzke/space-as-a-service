@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Accordian from './components/Accordian';
 
 export default function App() {
   return (
-    <Accordian></Accordian>
+    <SafeAreaView>
+      <ScrollView>
+      <Accordian />
+      </ScrollView>
+      </SafeAreaView>
   );
 }
 

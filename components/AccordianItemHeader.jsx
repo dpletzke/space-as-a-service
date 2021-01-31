@@ -5,16 +5,16 @@ import { AntDesign } from "@expo/vector-icons";
 const AccordianItemHeader = (props) => {
   const { toggle, title, isToggled } = props;
   return (
-    <Button onClick={toggle} onPress={toggle} style={styles.containerName}>
-      <Text style={styles.name}>{title}</Text>
+    <>
+      <Button onPress={toggle} title={title} />
       <Text>
         {isToggled ? (
-          <AntDesign name="minus" size={24} color="white" />
+          <AntDesign name="minus" size={24} color="black" />
         ) : (
-          <AntDesign name="plus" size={24} color="white" />
+          <AntDesign name="plus" size={24} color="black" />
         )}
       </Text>
-    </Button>
+    </>
   );
 };
 

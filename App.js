@@ -7,9 +7,9 @@ export default function App() {
   return (
     <SafeAreaView>
       <ScrollView>
-      <Accordian />
+        <Accordian />
       </ScrollView>
-      </SafeAreaView>
+    </SafeAreaView>
   );
 }
 

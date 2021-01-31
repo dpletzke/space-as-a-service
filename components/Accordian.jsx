@@ -92,24 +92,22 @@ const Accordian = (props) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text>SpaceX Launch Viewer</Text>
       {missionData &&
         Object.values(missionData).map((data, index) => {
           const isToggled = clicked === index;
           return (
-            <>
-              <AccordianItem
-                key={index}
-                isToggled={isToggled}
-                toggle={toggle(index)}
-                header={data}
-                details={launchData[data.mission_id]}
-              />
-            </>
+            <AccordianItem
+              key={index}
+              isToggled={isToggled}
+              toggle={toggle(index)}
+              header={data}
+              details={launchData[data.mission_id]}
+            />
           );
         })}
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -15,6 +15,7 @@ import AccordianItem from "./AccordianItem";
 const Accordian = (props) => {
   const [clicked, setClicked] = useState(false);
   const [missionData, setMissionData] = useState({});
+  const [launchData, setLaunchData] = useState({});
 
   useEffect(() => {
     const urlMissions = "https://api.spacexdata.com/v3/missions";
@@ -28,7 +29,13 @@ const Accordian = (props) => {
 
     missionReq
       .then(({ data }) => {
-        setMissionData(data);
+        const missionRef = data.reduce((acc, md) => {
+          const { mission_id, mission_name } = md;
+          acc[md.mission_id] = { mission_id, mission_name };
+          return acc;
+        }, {});
+        console.log(missionRef);
+        setMissionData(missionRef);
       })
       .catch((err) => {
         console.error(err);
@@ -37,12 +44,41 @@ const Accordian = (props) => {
     // I want to set an individual state for each details component
     // I want them to update individually once the data is recieved
     //
+
     Promise.all([missionReq, launchReq, launchpadReq])
-      .then(([__, { data: launches }, { data: launchSites }]) => {
-        launches.forEach((launch) => {
-          console.log(launch.mission_id, launch.mission_name);
-        });
-      })
+      .then(
+        ([{ data: missions }, { data: launches }, { data: launchSites }]) => {
+          const launchSitesRef = launchSites.reduce((acc, ls) => {
+            acc[ls.site_id] = ls.location;
+            return acc;
+          }, {});
+          const launchRef = launches.reduce((acc, launch) => {
+            const {
+              launch_success,
+              mission_id,
+              details,
+              launch_site,
+              flight_number,
+            } = launch;
+            for (const id of mission_id) {
+              const data = {
+                launch_success,
+                details,
+                launch_site,
+                flight_number,
+                location: launchSitesRef[launch_site.site_id],
+              };
+              if (acc[id]) {
+                acc[id].push(data);
+              } else {
+                acc[id] = [data];
+              }
+            }
+            return acc;
+          }, {});
+          setLaunchData(launchRef);
+        }
+      )
       .catch((err) => {
         console.error(err);
       });
@@ -66,9 +102,10 @@ const Accordian = (props) => {
             return (
               <AccordianItem
                 key={index}
-                isToggled
+                isToggled={isToggled}
                 toggle={toggle(index)}
-                data={data}
+                header={data}
+                details={launchData[data.mission_id]}
               />
             );
           })}
@@ -85,5 +122,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     padding: "1.5rem",
+    margin: "2rem",
   },
 });

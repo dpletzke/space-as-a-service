@@ -14,9 +14,9 @@ The App accesses a community run SpaceX API aggregating details about each missi
 
 <p align='center'>Home, Launches and Launch Detail View</p>
   <p align="center">
-    <img src="https://github.com/dpletzke/lets-get-trivial/blob/master/docs/Main.png?raw=true" height="400">
-    <img src="https://github.com/dpletzke/lets-get-trivial/blob/master/docs/Launches.png?raw=true" height="400">
-    <img src="https://github.com/dpletzke/lets-get-trivial/blob/master/docs/Launch_Details.png?raw=true" height="400">
+    <img src="https://github.com/dpletzke/space-as-a-service/blob/master/docs/Main.png?raw=true" height="400">
+    <img src="https://github.com/dpletzke/space-as-a-service/blob/master/docs/Launches.png?raw=true" height="400">
+    <img src="https://github.com/dpletzke/space-as-a-service/blob/master/docs/Launch_Details.png?raw=true" height="400">
   </p>
 </p>
 

@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
     backgroundColor: MEDIUM_GRAY,
     marginVertical: 5,
     overflow: "hidden",
+    shadowColor: "black",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 10, height: 10 },
+    shadowRadius: 40,
+    elevation: 10,
   },
   columnHeadersText: {
     fontSize: 10,

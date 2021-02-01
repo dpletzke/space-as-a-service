@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginTop: Constants.statusBarHeight,
     height: "15%",
+    elevation: 10,
   },
   headerNav: {
     justifyContent: "space-between",

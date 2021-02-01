@@ -100,9 +100,6 @@ const Accordian = (props) => {
   return (
     <View style={styles.container}>
       <Header title="SpaceX Missions"></Header>
-      {/* <View style={styles.header}>
-        <Text style={styles.textLarge}></Text>
-      </View> */}
       <View style={styles.accordian}>
         {missionData &&
           Object.values(missionData).map((data, index) => {

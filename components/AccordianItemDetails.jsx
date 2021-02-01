@@ -13,6 +13,16 @@ const AccordianItemDetails = (props) => {
       {details &&
         details.map((data, index) => {
           const { launch_success, location, launch_date_local } = data;
+          let successIcon;
+          if (launch_success) {
+            successIcon = (
+              <Ionicons name="md-checkmark-circle" size={32} color="green" />
+            );
+          } else {
+            successIcon = (
+              <Octicons name="issue-opened" size={32} color="red" />
+            );
+          }
           return (
             <View key={index} style={styles.container}>
               <View style={styles.textContainer}>
@@ -20,17 +30,7 @@ const AccordianItemDetails = (props) => {
                   {launch_date_local.substring(0, 10)}
                 </Text>
               </View>
-              <View style={styles.textContainer}>
-                {launch_success ? (
-                  <Ionicons
-                    name="md-checkmark-circle"
-                    size={32}
-                    color="green"
-                  />
-                ) : (
-                  <Octicons name="issue-opened" size={32} color="red" />
-                )}
-              </View>
+              <View style={styles.textContainer}>{successIcon}</View>
               <View style={styles.textContainer}>
                 <Text style={styles.text}>{location && location.name}</Text>
               </View>

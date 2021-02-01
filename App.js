@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Constants from "expo-constants";
+
 import Accordian from './components/Accordian';
 import DetailsView from './components/DetailsView';
 
@@ -36,7 +38,7 @@ export default function App() {
     <StatusBar backgroundColor='#ffffff' barStyle='light-content' ></StatusBar>
     </View>
     <SafeAreaView style={styles.safeContainer}>
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         {controller(view)}
       </ScrollView>
     </SafeAreaView>
@@ -49,7 +51,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    height: Platform.OS === 'ios' ? 20 : StatusBar.currentHeight,
+    height: Constants.statusBarHeight,
+    backgroundColor: '#22272B'
   },
   safeContainer: {
     minHeight: '100%'

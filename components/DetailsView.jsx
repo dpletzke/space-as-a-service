@@ -24,8 +24,12 @@ const DetailsView = (props) => {
         <NavButton
           onPress={() => changeView(MAIN, {})}
           symbol={<FontAwesome name="chevron-left" size={20} color="white" />}
+          style={styles.button}
         />
         <Text style={styles.textLarge}>Launch</Text>
+        <Text style={{ width: 50 }}>
+          <FontAwesome name="chevron-left" size={20} color="#181c1f" />
+        </Text>
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.card}>
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#181c1f",
     flex: 1,
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 20,
     marginTop: Constants.statusBarHeight,
@@ -67,7 +71,6 @@ const styles = StyleSheet.create({
   textLarge: {
     color: "white",
     fontSize: 20,
-    marginHorizontal: "auto",
   },
   text: {
     color: "white",

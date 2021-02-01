@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Octicons, Ionicons, FontAwesome } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 import {
   Table,
   TableWrapper,
@@ -17,8 +17,11 @@ const MAIN = "MAIN";
 
 const DetailsView = (props) => {
   const { changeView, details } = props;
-  const { launch_success, location, launch_date_local } = details;
+  const { launch_success, location, launch_date_local, links } = details;
 
+  const launchImageURI =
+    links && links.flickr_images ? links.flickr_images[0] : null;
+  console.log(launchImageURI);
   const tableTitle = [
     "Date:",
     "Success:",
@@ -49,6 +52,12 @@ const DetailsView = (props) => {
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.card}>
+          <Image
+            style={styles.launchImage}
+            source={{ uri: launchImageURI }}
+            resizeMode="cover"
+            defaultSource={require("../assets/spacex_logo.png")}
+          />
           <Table>
             <TableWrapper style={styles.wrapper}>
               <Col
@@ -72,22 +81,6 @@ const DetailsView = (props) => {
             </View>
           )}
         </View>
-        {/* <View style={styles.card}>
-          <View>
-            <Text>Date:</Text>
-            <Text>Success:</Text>
-            <Text>Location:</Text>
-            <Text>latitude:</Text>
-          </View>
-          <Text style={styles.text}>
-            Date: {launch_date_local.substring(0, 10)}
-          </Text>
-          <Text style={styles.text}>Success: {successIcon}</Text>
-          <Text style={styles.text}>Location: {location.name}</Text>
-          <Text style={styles.text}>Latitude: {location.latitude}</Text>
-          <Text style={styles.text}>Longtitude: {location.longitude}</Text>
-          <Text style={styles.text}>Details: {details.details}</Text>
-        </View> */}
       </View>
     </View>
   );
@@ -103,6 +96,11 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginTop: Constants.statusBarHeight,
     height: "15%",
+  },
+  launchImage: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
   },
   button: {
     marginLeft: 10,
@@ -130,6 +128,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#181c1f",
     borderRadius: 40,
     padding: 20,
+    marginBottom: 20,
+    flex: 1,
+    flexDirection: "column",
   },
   wrapper: { flexDirection: "row" },
   title: { flex: 1 },

@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import Constants from "expo-constants";
 
@@ -43,16 +36,11 @@ const Accordian = (props) => {
           acc[md.mission_id] = { mission_id, mission_name };
           return acc;
         }, {});
-        console.log(missionRef);
         setMissionData(missionRef);
       })
       .catch((err) => {
         console.error(err);
       });
-
-    // I want to set an individual state for each details component
-    // I want them to update individually once the data is recieved
-    //
 
     Promise.all([missionReq, launchReq, launchpadReq])
       .then(
@@ -69,6 +57,7 @@ const Accordian = (props) => {
               launch_site,
               flight_number,
               launch_date_local,
+              links,
             } = launch;
             for (const id of mission_id) {
               const data = {
@@ -78,6 +67,7 @@ const Accordian = (props) => {
                 flight_number,
                 launch_date_local,
                 location: launchSitesRef[launch_site.site_id],
+                links,
               };
               if (acc[id]) {
                 acc[id].push(data);

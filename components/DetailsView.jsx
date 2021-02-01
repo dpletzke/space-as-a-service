@@ -12,6 +12,7 @@ import {
 import Constants from "expo-constants";
 
 import NavButton from "./NavButton";
+import Header from "./Header";
 
 const MAIN = "MAIN";
 
@@ -21,13 +22,12 @@ const DetailsView = (props) => {
 
   const launchImageURI =
     links && links.flickr_images ? links.flickr_images[0] : null;
-  console.log(launchImageURI);
   const tableTitle = [
     "Date:",
     "Success:",
     "Location:",
-    "Latitude",
-    "Longitude",
+    "Latitude:",
+    "Longitude:",
   ];
   const tableData = [
     [launch_date_local.substring(0, 10)],
@@ -39,7 +39,11 @@ const DetailsView = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <Header
+        title="Launch"
+        nav={{ onPress: () => changeView(MAIN, {}), symbol: "chevron-left" }}
+      ></Header>
+      {/* <View style={styles.header}>
         <NavButton
           onPress={() => changeView(MAIN, {})}
           symbol={<FontAwesome name="chevron-left" size={20} color="white" />}
@@ -49,15 +53,17 @@ const DetailsView = (props) => {
         <Text style={{ width: 50 }}>
           <FontAwesome name="chevron-left" size={20} color="#181c1f" />
         </Text>
-      </View>
+      </View> */}
       <View style={styles.detailsContainer}>
         <View style={styles.card}>
-          <Image
-            style={styles.launchImage}
-            source={{ uri: launchImageURI }}
-            resizeMode="cover"
-            defaultSource={require("../assets/spacex_logo.png")}
-          />
+          {launchImageURI && (
+            <Image
+              style={styles.launchImage}
+              source={{ uri: launchImageURI }}
+              resizeMode="cover"
+              defaultSource={require("../assets/spacex_logo.png")}
+            />
+          )}
           <Table>
             <TableWrapper style={styles.wrapper}>
               <Col

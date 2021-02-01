@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: "#181C1F",
     marginVertical: 5,
+    overflow: "hidden",
   },
   columnHeadersText: {
     fontSize: 10,
@@ -57,6 +58,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     borderBottomWidth: 1,
+    borderBottomColor: "#22272B",
     paddingVertical: 10,
     marginBottom: 10,
   },

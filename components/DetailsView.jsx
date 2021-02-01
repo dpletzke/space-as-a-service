@@ -62,7 +62,7 @@ const DetailsView = (props) => {
               source={{ uri: launchImageURI }}
               resizeMode="cover"
               defaultSource={require("../assets/spacex_logo.png")}
-            />
+            ></Image>
           )}
           <Table>
             <TableWrapper style={styles.wrapper}>

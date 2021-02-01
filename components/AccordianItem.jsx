@@ -12,11 +12,19 @@ const AccordianItem = (props) => {
       <AccordianItemHeader {...{ title, isToggled, toggle }} />
       {isToggled && (
         <>
-          <View style={styles.columnHeaderContainer}>
-            <Text style={styles.columnHeadersText}>Date</Text>
-            <Text style={styles.columnHeadersText}>Success</Text>
-            <Text style={styles.columnHeadersText}>Location</Text>
-            <Text style={styles.columnHeadersText}>Details</Text>
+          <View style={styles.columnHeadersContainer}>
+            <View styles={styles.columnHeadersTextContainer}>
+              <Text style={styles.columnHeadersText}>Launch Date</Text>
+            </View>
+            <View styles={styles.columnHeadersTextContainer}>
+              <Text style={styles.columnHeadersText}>Success</Text>
+            </View>
+            <View styles={styles.columnHeadersTextContainer}>
+              <Text style={styles.columnHeadersText}>Location</Text>
+            </View>
+            <View styles={styles.columnHeadersTextContainer}>
+              <Text style={styles.columnHeadersText}>Details</Text>
+            </View>
           </View>
           <AccordianItemDetails details={details} changeView={changeView} />
         </>
@@ -37,13 +45,20 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "white",
   },
-  columnHeaderContainer: {
+  columnHeadersTextContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 80,
+  },
+  columnHeadersContainer: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     borderBottomWidth: 1,
-    paddingBottom: 10,
+    paddingVertical: 10,
+    marginBottom: 10,
   },
 });
 

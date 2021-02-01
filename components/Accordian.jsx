@@ -137,7 +137,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 20,
+    paddingVertical: 5,
+    height: "20%",
     marginTop: Constants.statusBarHeight,
   },
   textLarge: {
@@ -151,5 +152,6 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#22272b",
+    minHeight: "100%",
   },
 });

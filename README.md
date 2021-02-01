@@ -22,14 +22,8 @@ The App accesses a community run SpaceX API aggregating details about each missi
 
 ## How to Install Locally
 
-<p> To install and veiw in its current state follow instructions (here)[https://docs.expo.io/get-started/installation/]
-
-`npm install` x 2
-
-`npm start` x 2
-
-<p>If serving 'Let's Get Trivial' locally, you will <em>not</em> be able to host multiplayer games over the internet. If you want to play the multiplayer, working version of the app, visit <a href="https://www.lets-get-trivial-game.herokuapp.com">Let's Get Trivial</a> on Heroku.</p>
+<p> To install and view in its current state follow instructions (here)[https://docs.expo.io/get-started/installation/], and run `expo start` in the command line and scan the displayed QR code with the Expo Go App. Changing the connection from 'LAN' to 'Tunnel' might be necessary depending on your router settings.</p>
 
 ## API Credits
 
-This app draws questions from the Open Trivia Database. [Visit their site to contribute a question to the game](https://opentdb.com/login.php).
+This app draws data from the r/SpaceX API. [Visit their site for more details](https://docs.spacexdata.com/).

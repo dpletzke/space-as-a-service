@@ -39,7 +39,10 @@ const Main = () => {
         <StatusBar backgroundColor="white" barStyle="light-content"></StatusBar>
       </View>
       <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView
+          pinchGestureEnabled={false}
+          contentContainerStyle={styles.container}
+        >
           {controller(view)}
         </ScrollView>
       </SafeAreaView>

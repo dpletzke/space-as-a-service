@@ -12,7 +12,7 @@ import axios from "axios";
 
 import { LIGHT_GRAY, MEDIUM_GRAY } from "../../constants";
 
-import Header from "./Header";
+import Header from "../Header";
 import AccordianItem from "./AccordianItem";
 
 const Accordian = (props) => {

@@ -10,7 +10,7 @@ import axios from "axios";
 // import { launchData } from "../fixtures/LaunchData";
 // import { launchSiteData } from "../fixtures/LaunchSiteData";
 
-import { LIGHT_GRAY, MEDIUM_GRAY } from "../constants";
+import { LIGHT_GRAY, MEDIUM_GRAY } from "../../constants";
 
 import Header from "./Header";
 import AccordianItem from "./AccordianItem";

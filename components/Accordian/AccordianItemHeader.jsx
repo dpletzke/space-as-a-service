@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-import NavButton from "./NavButton";
+import NavButton from "../NavButton";
 
-import { DARK_GRAY } from "../constants";
+import { DARK_GRAY } from "../../constants";
 
 const AccordianItemHeader = (props) => {
   const { toggle, title, isToggled } = props;

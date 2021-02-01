@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Ionicons, Octicons, FontAwesome } from "@expo/vector-icons";
 
-import NavButton from "./NavButton";
+import NavButton from "../NavButton";
 
-const DETAILS = "DETAILS";
+import { DETAILS } from "../../constants";
 
 const AccordianItemDetails = (props) => {
   const { details, changeView } = props;

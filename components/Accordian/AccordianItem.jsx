@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import AccordianItemHeader from "./AccordianItemHeader";
 import AccordianItemDetails from "./AccordianItemDetails";
 
-import { DARK_GRAY, LIGHT_GRAY, MEDIUM_GRAY } from "../constants";
+import { DARK_GRAY, LIGHT_GRAY, MEDIUM_GRAY } from "../../constants";
 
 const AccordianItem = (props) => {
   const { isToggled, header, toggle, details, changeView } = props;

@@ -10,6 +10,7 @@ import axios from "axios";
 // import { launchData } from "../fixtures/LaunchData";
 // import { launchSiteData } from "../fixtures/LaunchSiteData";
 
+import Header from "./Header";
 import AccordianItem from "./AccordianItem";
 
 const Accordian = (props) => {
@@ -96,9 +97,10 @@ const Accordian = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.textLarge}>SpaceX Missions</Text>
-      </View>
+      <Header title="SpaceX Missions"></Header>
+      {/* <View style={styles.header}>
+        <Text style={styles.textLarge}></Text>
+      </View> */}
       <View style={styles.accordian}>
         {missionData &&
           Object.values(missionData).map((data, index) => {

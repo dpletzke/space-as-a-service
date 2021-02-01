@@ -43,17 +43,6 @@ const DetailsView = (props) => {
         title="Launch"
         nav={{ onPress: () => changeView(MAIN, {}), symbol: "chevron-left" }}
       ></Header>
-      {/* <View style={styles.header}>
-        <NavButton
-          onPress={() => changeView(MAIN, {})}
-          symbol={<FontAwesome name="chevron-left" size={20} color="white" />}
-          style={styles.button}
-        />
-        <Text style={styles.textLarge}>Launch</Text>
-        <Text style={{ width: 50 }}>
-          <FontAwesome name="chevron-left" size={20} color="#181c1f" />
-        </Text>
-      </View> */}
       <View style={styles.detailsContainer}>
         <View style={styles.card}>
           {launchImageURI && (

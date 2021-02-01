@@ -4,10 +4,15 @@ import { View, Text, StyleSheet } from "react-native";
 
 import NavButton from "./NavButton";
 
+import Constants from "expo-constants";
+
 const Header = (props) => {
   const { nav, title } = props;
+  const headerStyle = [styles.header];
+
+  if (nav) headerStyle.push(styles.headerNav);
   return (
-    <View style={styles.header}>
+    <View style={headerStyle}>
       {nav && (
         <NavButton
           onPress={nav.onPress}
@@ -30,11 +35,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#181c1f",
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     paddingVertical: 20,
     marginTop: Constants.statusBarHeight,
     height: "15%",
+  },
+  headerNav: {
+    justifyContent: "space-between",
   },
   textLarge: {
     color: "white",

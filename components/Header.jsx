@@ -11,6 +11,7 @@ const Header = (props) => {
   const { nav, title } = props;
   const headerStyle = [styles.header];
 
+  // if a nav button is needed, align items by space-between
   if (nav) headerStyle.push(styles.headerNav);
   return (
     <View style={headerStyle}>
@@ -22,6 +23,7 @@ const Header = (props) => {
         />
       )}
       <Text style={styles.textLarge}>{title}</Text>
+      {/* dummy button to allow for space between layout */}
       {nav && (
         <Text style={{ width: 50 }}>
           <FontAwesome name="chevron-left" size={20} color={MEDIUM_GRAY} />

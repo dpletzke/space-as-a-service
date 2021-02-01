@@ -2,8 +2,6 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Table, TableWrapper, Rows, Col } from "react-native-table-component";
 
-import Constants from "expo-constants";
-
 import Header from "./Header";
 
 import { LIGHT_GRAY, MAIN, MEDIUM_GRAY } from "../constants";
@@ -63,7 +61,7 @@ const DetailsView = (props) => {
           </Table>
           {details.details && (
             <View>
-              <Text style={styles.textLarge}>Details</Text>
+              <Text style={styles.largeText}>Details</Text>
               <Text style={styles.text}>{details.details}</Text>
             </View>
           )}
@@ -74,25 +72,12 @@ const DetailsView = (props) => {
 };
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: MEDIUM_GRAY,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 20,
-    marginTop: Constants.statusBarHeight,
-    height: "15%",
-  },
   launchImage: {
     width: 200,
     height: 200,
     alignSelf: "center",
   },
-  button: {
-    marginLeft: 10,
-  },
-  textLarge: {
+  largeText: {
     color: "white",
     fontSize: 20,
     textAlign: "center",

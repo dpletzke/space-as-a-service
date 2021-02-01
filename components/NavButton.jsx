@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 
+import { DARK_GRAY } from "../constants";
+
 const NavButton = (props) => {
   const { symbol, onPress } = props;
   return (
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     padding: 3,
-    backgroundColor: "#0F1112",
+    backgroundColor: DARK_GRAY,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

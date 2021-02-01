@@ -2,9 +2,10 @@ import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { View, Text, StyleSheet } from "react-native";
 
-import NavButton from "./NavButton";
-
 import Constants from "expo-constants";
+
+import { MEDIUM_GRAY } from "../constants";
+import NavButton from "./NavButton";
 
 const Header = (props) => {
   const { nav, title } = props;
@@ -23,7 +24,7 @@ const Header = (props) => {
       <Text style={styles.textLarge}>{title}</Text>
       {nav && (
         <Text style={{ width: 50 }}>
-          <FontAwesome name="chevron-left" size={20} color="#181c1f" />
+          <FontAwesome name="chevron-left" size={20} color={MEDIUM_GRAY} />
         </Text>
       )}
     </View>
@@ -32,7 +33,7 @@ const Header = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#181c1f",
+    backgroundColor: MEDIUM_GRAY,
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",

@@ -4,6 +4,8 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import NavButton from "./NavButton";
 
+import { DARK_GRAY } from "../constants";
+
 const AccordianItemHeader = (props) => {
   const { toggle, title, isToggled } = props;
   return (
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#0F1112",
+    backgroundColor: DARK_GRAY,
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 40,

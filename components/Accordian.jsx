@@ -10,6 +10,8 @@ import axios from "axios";
 // import { launchData } from "../fixtures/LaunchData";
 // import { launchSiteData } from "../fixtures/LaunchSiteData";
 
+import { LIGHT_GRAY, MEDIUM_GRAY } from "../constants";
+
 import Header from "./Header";
 import AccordianItem from "./AccordianItem";
 
@@ -125,7 +127,7 @@ export default Accordian;
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#181c1f",
+    backgroundColor: MEDIUM_GRAY,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
   },
   textLarge: {
-    color: "#ffffff",
+    color: "white",
     fontSize: 20,
   },
   accordian: {
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   container: {
-    backgroundColor: "#22272b",
+    backgroundColor: LIGHT_GRAY,
     minHeight: "100%",
   },
 });

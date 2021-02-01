@@ -1,20 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-} from "react-native-table-component";
+import { Table, TableWrapper, Rows, Col } from "react-native-table-component";
 
 import Constants from "expo-constants";
 
-import NavButton from "./NavButton";
 import Header from "./Header";
 
-const MAIN = "MAIN";
+import { LIGHT_GRAY, MAIN, MEDIUM_GRAY } from "../constants";
 
 const DetailsView = (props) => {
   const { changeView, details } = props;
@@ -83,7 +75,7 @@ const DetailsView = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#181c1f",
+    backgroundColor: MEDIUM_GRAY,
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -110,7 +102,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   detailsContainer: {
-    backgroundColor: "#22272b",
+    backgroundColor: LIGHT_GRAY,
     display: "flex",
     flexDirection: "column",
     padding: 10,
@@ -120,7 +112,7 @@ const styles = StyleSheet.create({
     minHeight: "100%",
   },
   card: {
-    backgroundColor: "#181c1f",
+    backgroundColor: MEDIUM_GRAY,
     borderRadius: 40,
     padding: 20,
     marginBottom: 20,

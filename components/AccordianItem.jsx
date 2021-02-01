@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import AccordianItemHeader from "./AccordianItemHeader";
 import AccordianItemDetails from "./AccordianItemDetails";
+
+import { DARK_GRAY, LIGHT_GRAY, MEDIUM_GRAY } from "../constants";
 
 const AccordianItem = (props) => {
   const { isToggled, header, toggle, details, changeView } = props;
@@ -36,9 +38,9 @@ const AccordianItem = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
-    borderColor: "#0f1112",
+    borderColor: DARK_GRAY,
     borderRadius: 40,
-    backgroundColor: "#181C1F",
+    backgroundColor: MEDIUM_GRAY,
     marginVertical: 5,
     overflow: "hidden",
   },
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     borderBottomWidth: 1,
-    borderBottomColor: "#22272B",
+    borderBottomColor: LIGHT_GRAY,
     paddingVertical: 10,
     marginBottom: 10,
   },

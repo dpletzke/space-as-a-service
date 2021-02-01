@@ -7,8 +7,7 @@ import Accordian from './components/Accordian';
 import DetailsView from './components/DetailsView';
 
 // view constants
-const MAIN = 'MAIN';
-const DETAILS = 'DETAILS';
+import { MAIN, DETAILS, LIGHT_GRAY } from './constants'
 
 export default function App() {
   const [view, setView] = useState(MAIN); 
@@ -34,9 +33,9 @@ export default function App() {
 
   return (
     <>
-    <View style={styles.statusContainer}>
-    <StatusBar backgroundColor='#ffffff' barStyle='light-content' ></StatusBar>
-    </View>
+      <View style={styles.statusContainer}>
+        <StatusBar backgroundColor='white' barStyle='light-content' ></StatusBar>
+      </View>
     <SafeAreaView style={styles.safeContainer}>
       <ScrollView contentContainerStyle={styles.container}>
         {controller(view)}
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: Constants.statusBarHeight,
-    backgroundColor: '#22272B'
+    backgroundColor: LIGHT_GRAY
   },
   safeContainer: {
     minHeight: '100%'
